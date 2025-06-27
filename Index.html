@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Netik Sharma | Mission IIT</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #e0f7fa, #e1f5fe);
+      color: #1a237e;
+      overflow-x: hidden;
+    }
+
+    /* NAVIGATION BAR */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: #0d47a1;
+      color: white;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      padding: 1rem 0;
+      z-index: 1000;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #ffd600;
+    }
+
+    /* SECTION BASE */
+    section {
+      min-height: 100vh;
+      padding: 100px 30px 50px 30px;
+      text-align: center;
+      opacity: 0;
+      transform: translateY(40px);
+      animation: fadeIn 1s ease-in forwards;
+    }
+
+    section:nth-of-type(1) { animation-delay: 0.3s; }
+    section:nth-of-type(2) { animation-delay: 0.6s; }
+    section:nth-of-type(3) { animation-delay: 0.9s; }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    h1 {
+      font-size: 2.7rem;
+      margin-bottom: 20px;
+      color: #0d47a1;
+    }
+
+    p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: auto;
+    }
+
+    .floating-symbol {
+      position: absolute;
+      font-size: 20px;
+      font-weight: bold;
+      color: rgba(30, 136, 229, 0.5);
+      animation: floatSymbol 15s linear infinite;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    @keyframes floatSymbol {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-150vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#mission">Mission IIT</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <!-- HOME -->
+  <section id="home">
+    <h1>Hi, I'm <span style="color: #1565c0;">Netik Sharma</span></h1>
+    <p>I love Mathematics and Physics. I'm currently preparing for <strong>JEE Advanced</strong> and <strong> Olympiads(IOQM,NSEP,etc)</strong> with full dedication and discipline.</p>
+  </section>
+
+  <!-- MISSION IIT -->
+  <section id="mission">
+    <h1>🚀 Mission IIT</h1>
+    <p>This is more than a goal — it's a commitment. A journey through challenges, formulas, and sleepless nights to reach the gates of the Indian Institutes of Technology.</p>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <h1>About Me</h1>
+    <p>I believe in consistency, focus, and smart work. My day starts early and ends with learning. I’ve been chasing the dream of cracking JEE since 8th grade, and I’m now closer than ever.</p>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <h1>Contact</h1>
+    <p>You can reach me at: <br>
+    Email: vs1992333@gmail.com <br>
+    Mobile number-nahi hai
+    Location: India 🌏</p>
+  </section>
+
+  <!-- FLOATING ANIMATION -->
+  <script>
+    const symbols = ['π', 'eˣ', 'F = ma', '∑', '√x', '∞', 'ΔE'];
+    for (let i = 0; i < 50; i++) {
+      const span = document.createElement('span');
+      span.classList.add('floating-symbol');
+      span.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+      span.style.left = Math.random() * 100 + 'vw';
+      span.style.top = (Math.random() * 100 + 100) + 'vh';
+      span.style.fontSize = (Math.random() * 16 + 16) + 'px';
+      span.style.animationDuration = (Math.random() * 10 + 10) + 's';
+      document.body.appendChild(span);
+    }
+  </script>
+
+</body>
+</html>
