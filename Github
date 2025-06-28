@@ -1,0 +1,3 @@
+git add contact.html
+git commit -m "Fix: added Netlify form structure"
+git push
