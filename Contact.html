@@ -1,17 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Contact</title>
 </head>
 <body>
-  <h2>Send a Message</h2>
+  <h1>Contact Form</h1>
   <form name="contact" method="POST" data-netlify="true" action="/thankyou.html">
     <input type="hidden" name="form-name" value="contact" />
-    <p><input type="text" name="name" placeholder="Your Name" required></p>
-    <p><input type="email" name="email" placeholder="Your Email" required></p>
-    <p><textarea name="message" placeholder="Your Message" required></textarea></p>
-    <p><button type="submit">Send</button></p>
+    
+    <label>Your Name:</label><br />
+    <input type="text" name="name" required /><br /><br />
+
+    <label>Your Email:</label><br />
+    <input type="email" name="email" required /><br /><br />
+
+    <label>Your Message:</label><br />
+    <textarea name="message" required></textarea><br /><br />
+
+    <button type="submit">Send</button>
   </form>
 </body>
 </html>
+
