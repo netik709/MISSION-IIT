@@ -1,26 +1,194 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
   <title>Contact Form</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="netlify-honeypot" content="bot-field">
+  <style>
+    body {
+      background-color: #0d1117;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+    }
+
+    form {
+      background-color: #161b22;
+      color: #fff;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(0, 255, 200, 0.2);
+      width: 100%;
+      max-width: 450px;
+    }
+
+    h2 {
+      text-align: center;
+      color: #00e6ac;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      border-radius: 8px;
+      border: none;
+      margin-bottom: 15px;
+      background-color: #21262d;
+      color: white;
+    }
+
+    input[type="file"] {
+      padding: 5px;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #00e6ac;
+      border: none;
+      border-radius: 8px;
+      color: #000;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #00c19a;
+    }
+  </style>
 </head>
 <body>
-  <h1>Contact Us</h1>
 
-  <form name="contact" method="POST" data-netlify="true" action="/thankyou.html">
+  <form name="contact" method="POST" data-netlify="true" enctype="multipart/form-data" action="/thank-you.html">
     <input type="hidden" name="form-name" value="contact" />
+    <h2>Contact Us</h2>
 
-    <label for="name">Name:</label><br />
-    <input type="text" id="name" name="name" required /><br /><br />
+    <label>Your Name:</label>
+    <input type="text" name="name" required>
 
-    <label for="email">Email:</label><br />
-    <input type="email" id="email" name="email" required /><br /><br />
+    <label>Your Email:</label>
+    <input type="email" name="email" required>
 
-    <label for="message">Message:</label><br />
-    <textarea id="message" name="message" required></textarea><br /><br />
+    <label>Your Message:</label>
+    <textarea name="message" rows="5" required></textarea>
 
-    <button type="submit">Send</button>
+    <label>Upload an Image:</label>
+    <input type="file" name="image" accept="image/*">
+
+    <label>Upload a File:</label>
+    <input type="file" name="file">
+
+    <button type="submit">Send Message</button>
   </form>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Contact Form</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="netlify-honeypot" content="bot-field">
+  <style>
+    body {
+      background-color: #0d1117;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+    }
+
+    form {
+      background-color: #161b22;
+      color: #fff;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(0, 255, 200, 0.2);
+      width: 100%;
+      max-width: 450px;
+    }
+
+    h2 {
+      text-align: center;
+      color: #00e6ac;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      border-radius: 8px;
+      border: none;
+      margin-bottom: 15px;
+      background-color: #21262d;
+      color: white;
+    }
+
+    input[type="file"] {
+      padding: 5px;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #00e6ac;
+      border: none;
+      border-radius: 8px;
+      color: #000;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #00c19a;
+    }
+  </style>
+</head>
+<body>
+
+  <form name="contact" method="POST" data-netlify="true" enctype="multipart/form-data" action="/thank-you.html">
+    <input type="hidden" name="form-name" value="contact" />
+    <h2>Contact Us</h2>
+
+    <label>Your Name:</label>
+    <input type="text" name="name" required>
+
+    <label>Your Email:</label>
+    <input type="email" name="email" required>
+
+    <label>Your Message:</label>
+    <textarea name="message" rows="5" required></textarea>
+
+    <label>Upload an Image:</label>
+    <input type="file" name="image" accept="image/*">
+
+    <label>Upload a File:</label>
+    <input type="file" name="file">
+
+    <button type="submit">Send Message</button>
+  </form>
+
 </body>
 </html>
