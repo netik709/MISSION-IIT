@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -205,6 +206,120 @@
             margin-top: 5px;
         }
 
+        .action-buttons {
+            margin-top: 15px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .btn-delete {
+            background: #ff4757;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9em;
+        }
+
+        .btn-delete:hover {
+            background: #ff3838;
+        }
+
+        .btn-answer {
+            background: #2ecc71;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9em;
+        }
+
+        .btn-answer:hover {
+            background: #27ae60;
+        }
+
+        .answer-form {
+            margin-top: 15px;
+            display: none;
+        }
+
+        .answer-form.active {
+            display: block;
+        }
+
+        .answer-form textarea {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #2ecc71;
+            border-radius: 8px;
+            font-family: inherit;
+            margin-bottom: 10px;
+        }
+
+        .answer-form button {
+            background: #2ecc71;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .blog-add-section {
+            background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+
+        .blog-add-section h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+        }
+
+        .blog-add-section input,
+        .blog-add-section textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 2px solid #667eea;
+            border-radius: 8px;
+            font-size: 1em;
+            font-family: inherit;
+        }
+
+        .blog-add-section button {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+
+        .blog-add-section button:hover {
+            transform: scale(1.05);
+        }
+
+        .btn-delete-blog {
+            background: #ff4757;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9em;
+            margin-top: 10px;
+        }
+
+        .btn-delete-blog:hover {
+            background: #ff3838;
+        }
+
         footer {
             text-align: center;
             color: white;
@@ -247,28 +362,41 @@
         <div id="blog" class="section">
             <h2>Blog & Study Tips</h2>
             
-            <div class="blog-post">
-                <h3>How I Manage 8+ Hours of Daily Study</h3>
-                <p class="blog-date">Posted on: October 1, 2025</p>
-                <p>Consistency is key. I wake up at 5 AM every day and follow the Pomodoro technique - 50 minutes of focused study followed by 10 minutes break. I divide my day into blocks for Maths, Physics, and Chemistry. Evening is reserved for solving previous year papers and revision.</p>
+            <div class="blog-add-section">
+                <h3>✍️ Add New Blog Post</h3>
+                <input type="text" id="blogTitle" placeholder="Blog Title">
+                <textarea id="blogContent" rows="6" placeholder="Write your blog content here..."></textarea>
+                <button onclick="addBlogPost()">Publish Blog Post</button>
             </div>
 
-            <div class="blog-post">
-                <h3>Best Strategy for IOQM Preparation</h3>
-                <p class="blog-date">Posted on: September 28, 2025</p>
-                <p>IOQM requires deep conceptual understanding and problem-solving skills. Focus on number theory, combinatorics, and geometry. Solve problems from Mathematical Circles and previous IOQM papers. Practice is everything - aim for at least 20 problems daily.</p>
-            </div>
+            <div id="blogContainer">
+                <div class="blog-post" data-blog-id="1">
+                    <h3>How I Manage 8+ Hours of Daily Study</h3>
+                    <p class="blog-date">Posted on: October 1, 2025</p>
+                    <p>Consistency is key. I wake up at 5 AM every day and follow the Pomodoro technique - 50 minutes of focused study followed by 10 minutes break. I divide my day into blocks for Maths, Physics, and Chemistry. Evening is reserved for solving previous year papers and revision.</p>
+                    <button class="btn-delete-blog" onclick="deleteBlogPost(1)">🗑️ Delete</button>
+                </div>
 
-            <div class="blog-post">
-                <h3>Overcoming Physics Problems in Irodov</h3>
-                <p class="blog-date">Posted on: September 25, 2025</p>
-                <p>Irodov can be intimidating, but it's the best book for building problem-solving skills. Start with mechanics and work your way up. Don't skip steps in solutions - understanding the methodology is more important than getting the answer.</p>
-            </div>
+                <div class="blog-post" data-blog-id="2">
+                    <h3>Best Strategy for IOQM Preparation</h3>
+                    <p class="blog-date">Posted on: September 28, 2025</p>
+                    <p>IOQM requires deep conceptual understanding and problem-solving skills. Focus on number theory, combinatorics, and geometry. Solve problems from Mathematical Circles and previous IOQM papers. Practice is everything - aim for at least 20 problems daily.</p>
+                    <button class="btn-delete-blog" onclick="deleteBlogPost(2)">🗑️ Delete</button>
+                </div>
 
-            <div class="blog-post">
-                <h3>Why Mental Health Matters in JEE Preparation</h3>
-                <p class="blog-date">Posted on: September 20, 2025</p>
-                <p>It's a marathon, not a sprint. Take breaks, exercise daily, and don't burn out. I make sure to play badminton for 30 minutes every evening. A healthy mind performs better than an exhausted one.</p>
+                <div class="blog-post" data-blog-id="3">
+                    <h3>Overcoming Physics Problems in Irodov</h3>
+                    <p class="blog-date">Posted on: September 25, 2025</p>
+                    <p>Irodov can be intimidating, but it's the best book for building problem-solving skills. Start with mechanics and work your way up. Don't skip steps in solutions - understanding the methodology is more important than getting the answer.</p>
+                    <button class="btn-delete-blog" onclick="deleteBlogPost(3)">🗑️ Delete</button>
+                </div>
+
+                <div class="blog-post" data-blog-id="4">
+                    <h3>Why Mental Health Matters in JEE Preparation</h3>
+                    <p class="blog-date">Posted on: September 20, 2025</p>
+                    <p>It's a marathon, not a sprint. Take breaks, exercise daily, and don't burn out. I make sure to play badminton for 30 minutes every evening. A healthy mind performs better than an exhausted one.</p>
+                    <button class="btn-delete-blog" onclick="deleteBlogPost(4)">🗑️ Delete</button>
+                </div>
             </div>
         </div>
 
@@ -289,7 +417,17 @@
                 <div class="doubt-item" data-doubt-id="1">
                     <p class="doubt-question">Q: How to approach rotational motion problems?</p>
                     <p class="doubt-meta"><strong>Subject:</strong> Physics | <strong>Asked by:</strong> Rahul | <strong>Time:</strong> 2 days ago</p>
-                    <p style="margin-top: 10px;"><strong>Answer:</strong> Start by identifying the axis of rotation and apply torque equations. Use energy conservation when possible - it often simplifies the problem significantly.</p>
+                    <p style="margin-top: 10px;" class="doubt-answer"><strong>Answer:</strong> Start by identifying the axis of rotation and apply torque equations. Use energy conservation when possible - it often simplifies the problem significantly.</p>
+                    
+                    <div class="action-buttons">
+                        <button class="btn-answer" onclick="toggleAnswerForm(1)">✏️ Edit Answer</button>
+                        <button class="btn-delete" onclick="deleteDoubt(1)">🗑️ Delete Doubt</button>
+                    </div>
+
+                    <div class="answer-form" id="answerForm1">
+                        <textarea rows="3" id="answerText1" placeholder="Write your answer here...">Start by identifying the axis of rotation and apply torque equations. Use energy conservation when possible - it often simplifies the problem significantly.</textarea>
+                        <button onclick="submitAnswer(1)">💾 Save Answer</button>
+                    </div>
                     
                     <div class="comments-section">
                         <h4 style="color: #667eea; font-size: 1em; margin-bottom: 10px;">💬 Comments (2)</h4>
@@ -313,7 +451,17 @@
                 <div class="doubt-item" data-doubt-id="2">
                     <p class="doubt-question">Q: Best method for integration of trigonometric functions?</p>
                     <p class="doubt-meta"><strong>Subject:</strong> Mathematics | <strong>Asked by:</strong> Priya | <strong>Time:</strong> 3 days ago</p>
-                    <p style="margin-top: 10px;"><strong>Answer:</strong> Learn the standard forms first. For complex problems, try substitution methods. Converting everything to sine and cosine often helps.</p>
+                    <p style="margin-top: 10px;" class="doubt-answer"><strong>Answer:</strong> Learn the standard forms first. For complex problems, try substitution methods. Converting everything to sine and cosine often helps.</p>
+                    
+                    <div class="action-buttons">
+                        <button class="btn-answer" onclick="toggleAnswerForm(2)">✏️ Edit Answer</button>
+                        <button class="btn-delete" onclick="deleteDoubt(2)">🗑️ Delete Doubt</button>
+                    </div>
+
+                    <div class="answer-form" id="answerForm2">
+                        <textarea rows="3" id="answerText2" placeholder="Write your answer here...">Learn the standard forms first. For complex problems, try substitution methods. Converting everything to sine and cosine often helps.</textarea>
+                        <button onclick="submitAnswer(2)">💾 Save Answer</button>
+                    </div>
                     
                     <div class="comments-section">
                         <h4 style="color: #667eea; font-size: 1em; margin-bottom: 10px;">💬 Comments (1)</h4>
@@ -332,7 +480,17 @@
                 <div class="doubt-item" data-doubt-id="3">
                     <p class="doubt-question">Q: How to remember organic chemistry reactions?</p>
                     <p class="doubt-meta"><strong>Subject:</strong> Chemistry | <strong>Asked by:</strong> Amit | <strong>Time:</strong> 5 days ago</p>
-                    <p style="margin-top: 10px;"><strong>Answer:</strong> Don't just memorize - understand the mechanism. Make flashcards and revise daily. NCERT examples are gold for JEE.</p>
+                    <p style="margin-top: 10px;" class="doubt-answer"><strong>Answer:</strong> Don't just memorize - understand the mechanism. Make flashcards and revise daily. NCERT examples are gold for JEE.</p>
+                    
+                    <div class="action-buttons">
+                        <button class="btn-answer" onclick="toggleAnswerForm(3)">✏️ Edit Answer</button>
+                        <button class="btn-delete" onclick="deleteDoubt(3)">🗑️ Delete Doubt</button>
+                    </div>
+
+                    <div class="answer-form" id="answerForm3">
+                        <textarea rows="3" id="answerText3" placeholder="Write your answer here...">Don't just memorize - understand the mechanism. Make flashcards and revise daily. NCERT examples are gold for JEE.</textarea>
+                        <button onclick="submitAnswer(3)">💾 Save Answer</button>
+                    </div>
                     
                     <div class="comments-section">
                         <h4 style="color: #667eea; font-size: 1em; margin-bottom: 10px;">💬 Comments (0)</h4>
