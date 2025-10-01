@@ -122,131 +122,6 @@
             margin-top: 20px;
         }
 
-        .resource-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
-        }
-
-        .resource-card {
-            background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
-        }
-
-        .resource-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .resource-card h3 {
-            color: #667eea;
-            margin-bottom: 10px;
-        }
-
-        .resource-card ul {
-            list-style: none;
-        }
-
-        .resource-card li {
-            padding: 8px 0;
-            border-bottom: 1px solid rgba(102, 126, 234, 0.2);
-        }
-
-        .resource-card li:last-child {
-            border-bottom: none;
-        }
-
-        .progress-container {
-            margin: 20px 0;
-        }
-
-        .progress-item {
-            margin-bottom: 25px;
-        }
-
-        .progress-label {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 8px;
-            font-weight: bold;
-            color: #667eea;
-        }
-
-        .progress-bar {
-            background: #e0e0e0;
-            height: 25px;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: inset 0 2px 5px rgba(0,0,0,0.1);
-        }
-
-        .progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, #667eea, #764ba2);
-            border-radius: 15px;
-            transition: width 1s ease;
-            display: flex;
-            align-items: center;
-            justify-content: flex-end;
-            padding-right: 10px;
-            color: white;
-            font-weight: bold;
-        }
-
-        .blog-post {
-            background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
-            padding: 25px;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-
-        .blog-post h3 {
-            color: #667eea;
-            margin-bottom: 10px;
-        }
-
-        .blog-date {
-            color: #888;
-            font-size: 0.9em;
-            margin-bottom: 15px;
-        }
-
-        .doubt-form {
-            background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
-            padding: 25px;
-            border-radius: 10px;
-            margin-bottom: 20px;
-        }
-
-        .doubt-form input, .doubt-form textarea {
-            width: 100%;
-            padding: 12px;
-            margin-bottom: 15px;
-            border: 2px solid #667eea;
-            border-radius: 8px;
-            font-size: 1em;
-            font-family: inherit;
-        }
-
-        .doubt-form button {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            border: none;
-            padding: 12px 30px;
-            border-radius: 25px;
-            cursor: pointer;
-            font-size: 1em;
-            transition: transform 0.3s;
-        }
-
-        .doubt-form button:hover {
-            transform: scale(1.05);
-        }
-
         .doubt-list {
             margin-top: 30px;
         }
@@ -263,6 +138,71 @@
             font-weight: bold;
             color: #667eea;
             margin-bottom: 10px;
+        }
+
+        .doubt-meta {
+            color: #888;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+
+        .comments-section {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 2px solid #f0f0f0;
+        }
+
+        .comment-form {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .comment-form input {
+            flex: 1;
+            padding: 10px;
+            border: 2px solid #667eea;
+            border-radius: 8px;
+            font-size: 0.9em;
+        }
+
+        .comment-form button {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9em;
+        }
+
+        .comment-form button:hover {
+            opacity: 0.9;
+        }
+
+        .comment {
+            background: #f9f9f9;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            border-left: 3px solid #667eea;
+        }
+
+        .comment-author {
+            font-weight: bold;
+            color: #667eea;
+            font-size: 0.9em;
+        }
+
+        .comment-text {
+            margin-top: 5px;
+            font-size: 0.95em;
+        }
+
+        .comment-time {
+            font-size: 0.8em;
+            color: #999;
+            margin-top: 5px;
         }
 
         footer {
@@ -282,8 +222,6 @@
 
         <nav>
             <button onclick="showSection('about')" class="active">About</button>
-            <button onclick="showSection('resources')">Study Resources</button>
-            <button onclick="showSection('progress')">Progress Tracker</button>
             <button onclick="showSection('blog')">Blog</button>
             <button onclick="showSection('doubts')">Doubts</button>
         </nav>
@@ -299,154 +237,10 @@
                 
                 <div class="contact-info">
                     <h3>Contact Me</h3>
-                    <p>📧 Email: vs1992333@gmail.com</p>
+                    <p>📧 Email: netiksharma801@gmail.com</p>
                     <p>📱 Mobile: Not available</p>
                     <p>📍 Location: India 🌏</p>
                 </div>
-            </div>
-        </div>
-
-        <div id="resources" class="section">
-            <h2>Study Resources</h2>
-            <div class="resource-grid">
-                <div class="resource-card">
-                    <h3>📚 Mathematics</h3>
-                    <ul>
-                        <li>Cengage Mathematics Series</li>
-                        <li>Problems in Calculus - I.A. Maron</li>
-                        <li>Challenge and Thrill of Pre-College Mathematics</li>
-                        <li>TMH JEE Mathematics</li>
-                        <li>RD Sharma for basics</li>
-                    </ul>
-                </div>
-
-                <div class="resource-card">
-                    <h3>⚛️ Physics</h3>
-                    <ul>
-                        <li>HC Verma - Concepts of Physics</li>
-                        <li>DC Pandey Series</li>
-                        <li>Problems in General Physics - I.E. Irodov</li>
-                        <li>Resnick Halliday Walker</li>
-                        <li>200 Puzzling Physics Problems</li>
-                    </ul>
-                </div>
-
-                <div class="resource-card">
-                    <h3>🧪 Chemistry</h3>
-                    <ul>
-                        <li>NCERT (11th & 12th)</li>
-                        <li>OP Tandon</li>
-                        <li>MS Chauhan (Organic)</li>
-                        <li>JD Lee (Inorganic)</li>
-                        <li>RC Mukherjee (Physical)</li>
-                    </ul>
-                </div>
-
-                <div class="resource-card">
-                    <h3>🌐 Online Platforms</h3>
-                    <ul>
-                        <li>Physics Wallah</li>
-                        <li>Unacademy</li>
-                        <li>Khan Academy</li>
-                        <li>AoPS (Art of Problem Solving)</li>
-                        <li>Brilliant.org</li>
-                    </ul>
-                </div>
-
-                <div class="resource-card">
-                    <h3>🏆 Olympiad Resources</h3>
-                    <ul>
-                        <li>IOQM Previous Papers</li>
-                        <li>Mathematical Circles</li>
-                        <li>NSEP Study Material</li>
-                        <li>Pathfinder Series</li>
-                        <li>Olympiad Archives</li>
-                    </ul>
-                </div>
-
-                <div class="resource-card">
-                    <h3>📝 Test Series</h3>
-                    <ul>
-                        <li>FIITJEE AITS</li>
-                        <li>Allen Test Series</li>
-                        <li>Resonance DPP</li>
-                        <li>Previous Year Papers (20+ years)</li>
-                        <li>Mock Tests Weekly</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <div id="progress" class="section">
-            <h2>Progress Tracker</h2>
-            <div class="progress-container">
-                <div class="progress-item">
-                    <div class="progress-label">
-                        <span>📐 Mathematics (JEE)</span>
-                        <span>85%</span>
-                    </div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: 85%;"></div>
-                    </div>
-                </div>
-
-                <div class="progress-item">
-                    <div class="progress-label">
-                        <span>⚡ Physics (JEE)</span>
-                        <span>78%</span>
-                    </div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: 78%;"></div>
-                    </div>
-                </div>
-
-                <div class="progress-item">
-                    <div class="progress-label">
-                        <span>🧪 Chemistry (JEE)</span>
-                        <span>72%</span>
-                    </div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: 72%;"></div>
-                    </div>
-                </div>
-
-                <div class="progress-item">
-                    <div class="progress-label">
-                        <span>🏆 IOQM Preparation</span>
-                        <span>80%</span>
-                    </div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: 80%;"></div>
-                    </div>
-                </div>
-
-                <div class="progress-item">
-                    <div class="progress-label">
-                        <span>🎯 NSEP Preparation</span>
-                        <span>75%</span>
-                    </div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: 75%;"></div>
-                    </div>
-                </div>
-
-                <div class="progress-item">
-                    <div class="progress-label">
-                        <span>📚 Previous Year Papers</span>
-                        <span>65%</span>
-                    </div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: 65%;"></div>
-                    </div>
-                </div>
-            </div>
-
-            <div style="margin-top: 30px; padding: 20px; background: linear-gradient(135deg, #f5f7fa, #c3cfe2); border-radius: 10px;">
-                <h3 style="color: #667eea; margin-bottom: 15px;">📊 Statistics</h3>
-                <p><strong>Study Hours Today:</strong> 8 hours</p>
-                <p><strong>Mock Tests Attempted:</strong> 45</p>
-                <p><strong>Questions Solved:</strong> 3,500+</p>
-                <p><strong>Days to JEE Advanced:</strong> Counting down... 🎯</p>
             </div>
         </div>
 
@@ -490,24 +284,63 @@
             </div>
 
             <div class="doubt-list" id="doubtList">
-                <h3>Recent Doubts</h3>
+                <h3>Recent Doubts & Discussions</h3>
                 
-                <div class="doubt-item">
+                <div class="doubt-item" data-doubt-id="1">
                     <p class="doubt-question">Q: How to approach rotational motion problems?</p>
-                    <p><strong>Subject:</strong> Physics | <strong>Asked by:</strong> Rahul</p>
+                    <p class="doubt-meta"><strong>Subject:</strong> Physics | <strong>Asked by:</strong> Rahul | <strong>Time:</strong> 2 days ago</p>
                     <p style="margin-top: 10px;"><strong>Answer:</strong> Start by identifying the axis of rotation and apply torque equations. Use energy conservation when possible - it often simplifies the problem significantly.</p>
+                    
+                    <div class="comments-section">
+                        <h4 style="color: #667eea; font-size: 1em; margin-bottom: 10px;">💬 Comments (2)</h4>
+                        <div class="comment">
+                            <div class="comment-author">Priya</div>
+                            <div class="comment-text">This helped a lot! Thanks for the tip about energy conservation.</div>
+                            <div class="comment-time">1 day ago</div>
+                        </div>
+                        <div class="comment">
+                            <div class="comment-author">Amit</div>
+                            <div class="comment-text">Can you suggest some good practice problems for this topic?</div>
+                            <div class="comment-time">1 day ago</div>
+                        </div>
+                        <div class="comment-form">
+                            <input type="text" placeholder="Add a comment..." class="comment-input" data-doubt-id="1">
+                            <button onclick="addComment(1)">Post</button>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="doubt-item">
+                <div class="doubt-item" data-doubt-id="2">
                     <p class="doubt-question">Q: Best method for integration of trigonometric functions?</p>
-                    <p><strong>Subject:</strong> Mathematics | <strong>Asked by:</strong> Priya</p>
+                    <p class="doubt-meta"><strong>Subject:</strong> Mathematics | <strong>Asked by:</strong> Priya | <strong>Time:</strong> 3 days ago</p>
                     <p style="margin-top: 10px;"><strong>Answer:</strong> Learn the standard forms first. For complex problems, try substitution methods. Converting everything to sine and cosine often helps.</p>
+                    
+                    <div class="comments-section">
+                        <h4 style="color: #667eea; font-size: 1em; margin-bottom: 10px;">💬 Comments (1)</h4>
+                        <div class="comment">
+                            <div class="comment-author">Rahul</div>
+                            <div class="comment-text">The sine-cosine conversion trick is gold! Solved 5 problems using this.</div>
+                            <div class="comment-time">2 days ago</div>
+                        </div>
+                        <div class="comment-form">
+                            <input type="text" placeholder="Add a comment..." class="comment-input" data-doubt-id="2">
+                            <button onclick="addComment(2)">Post</button>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="doubt-item">
+                <div class="doubt-item" data-doubt-id="3">
                     <p class="doubt-question">Q: How to remember organic chemistry reactions?</p>
-                    <p><strong>Subject:</strong> Chemistry | <strong>Asked by:</strong> Amit</p>
+                    <p class="doubt-meta"><strong>Subject:</strong> Chemistry | <strong>Asked by:</strong> Amit | <strong>Time:</strong> 5 days ago</p>
                     <p style="margin-top: 10px;"><strong>Answer:</strong> Don't just memorize - understand the mechanism. Make flashcards and revise daily. NCERT examples are gold for JEE.</p>
+                    
+                    <div class="comments-section">
+                        <h4 style="color: #667eea; font-size: 1em; margin-bottom: 10px;">💬 Comments (0)</h4>
+                        <div class="comment-form">
+                            <input type="text" placeholder="Add a comment..." class="comment-input" data-doubt-id="3">
+                            <button onclick="addComment(3)">Post</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -519,6 +352,9 @@
     </div>
 
     <script>
+        // Store doubts in memory
+        let doubtIdCounter = 4;
+
         function showSection(sectionId) {
             const sections = document.querySelectorAll('.section');
             const buttons = document.querySelectorAll('nav button');
@@ -531,30 +367,89 @@
         }
 
         function submitDoubt() {
-            const name = document.getElementById('doubtName').value;
-            const subject = document.getElementById('doubtSubject').value;
-            const question = document.getElementById('doubtQuestion').value;
+            const name = document.getElementById('doubtName').value.trim();
+            const subject = document.getElementById('doubtSubject').value.trim();
+            const question = document.getElementById('doubtQuestion').value.trim();
             
             if (name && subject && question) {
                 const doubtList = document.getElementById('doubtList');
                 const newDoubt = document.createElement('div');
                 newDoubt.className = 'doubt-item';
+                newDoubt.setAttribute('data-doubt-id', doubtIdCounter);
                 newDoubt.innerHTML = `
                     <p class="doubt-question">Q: ${question}</p>
-                    <p><strong>Subject:</strong> ${subject} | <strong>Asked by:</strong> ${name}</p>
+                    <p class="doubt-meta"><strong>Subject:</strong> ${subject} | <strong>Asked by:</strong> ${name} | <strong>Time:</strong> Just now</p>
                     <p style="margin-top: 10px;"><strong>Answer:</strong> Pending response...</p>
+                    
+                    <div class="comments-section">
+                        <h4 style="color: #667eea; font-size: 1em; margin-bottom: 10px;">💬 Comments (0)</h4>
+                        <div class="comment-form">
+                            <input type="text" placeholder="Add a comment..." class="comment-input" data-doubt-id="${doubtIdCounter}">
+                            <button onclick="addComment(${doubtIdCounter})">Post</button>
+                        </div>
+                    </div>
                 `;
                 doubtList.appendChild(newDoubt);
                 
+                doubtIdCounter++;
+                
+                // Clear form
                 document.getElementById('doubtName').value = '';
                 document.getElementById('doubtSubject').value = '';
                 document.getElementById('doubtQuestion').value = '';
                 
-                alert('Doubt submitted successfully!');
+                alert('✅ Doubt posted successfully! It will be visible to everyone.');
+                
+                // Scroll to the new doubt
+                newDoubt.scrollIntoView({ behavior: 'smooth', block: 'center' });
             } else {
-                alert('Please fill all fields!');
+                alert('⚠️ Please fill all fields!');
             }
         }
+
+        function addComment(doubtId) {
+            const input = document.querySelector(`.comment-input[data-doubt-id="${doubtId}"]`);
+            const commentText = input.value.trim();
+            
+            if (commentText) {
+                const doubtItem = document.querySelector(`.doubt-item[data-doubt-id="${doubtId}"]`);
+                const commentsSection = doubtItem.querySelector('.comments-section');
+                const commentForm = commentsSection.querySelector('.comment-form');
+                const commentsHeader = commentsSection.querySelector('h4');
+                
+                // Update comment count
+                const currentCount = parseInt(commentsHeader.textContent.match(/\d+/)[0]);
+                commentsHeader.textContent = `💬 Comments (${currentCount + 1})`;
+                
+                // Create new comment
+                const newComment = document.createElement('div');
+                newComment.className = 'comment';
+                newComment.innerHTML = `
+                    <div class="comment-author">Anonymous</div>
+                    <div class="comment-text">${commentText}</div>
+                    <div class="comment-time">Just now</div>
+                `;
+                
+                // Insert before the comment form
+                commentsSection.insertBefore(newComment, commentForm);
+                
+                // Clear input
+                input.value = '';
+                
+                // Smooth scroll to comment
+                newComment.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            } else {
+                alert('⚠️ Please enter a comment!');
+            }
+        }
+
+        // Allow Enter key to submit comment
+        document.addEventListener('keypress', function(e) {
+            if (e.target.classList.contains('comment-input') && e.key === 'Enter') {
+                const doubtId = e.target.getAttribute('data-doubt-id');
+                addComment(parseInt(doubtId));
+            }
+        });
     </script>
 </body>
 </html>
