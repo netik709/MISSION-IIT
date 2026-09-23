@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Log — Netik Sharma</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Literata:ital,wght@0,400;0,500;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/css/site.css" />
+    <style>
+        main {
+            padding: 70px 0 110px;
+        }
+
+        .log-head {
+            max-width: 60ch;
+            margin-bottom: 40px;
+        }
+
+        .log-head h1 {
+            font-size: clamp(2rem, 4vw, 2.7rem);
+        }
+
+        .tabs {
+            display: inline-flex;
+            gap: 6px;
+            padding: 6px;
+            border-radius: 999px;
+            background: var(--ink-2);
+            border: 1px solid var(--rule);
+            margin-bottom: 42px;
+        }
+
+        .tabs button {
+            font-family: var(--font-mono);
+            font-size: 0.82rem;
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            padding: 10px 20px;
+            border-radius: 999px;
+            cursor: pointer;
+            transition: background 0.2s ease, color 0.2s ease;
+        }
+
+        .tabs button.active {
+            background: var(--gold);
+            color: #201705;
+        }
+
+        .section {
+            display: none;
+        }
+
+        .section.active {
+            display: block;
+            animation: fade-up 0.4s ease;
+        }
+
+        @keyframes fade-up {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ---- About / Now ---- */
+        .now-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 40px;
+        }
+
+        .now-grid p {
+            color: #d8d4c6;
+        }
+
+        .focus-list {
+            display: grid;
+            gap: 14px;
+        }
+
+        .focus-list .panel {
+            padding: 18px 20px;
+        }
+
+        .focus-list .panel b {
+            display: block;
+            font-family: var(--font-display);
+            color: var(--gold);
+            margin-bottom: 4px;
+        }
+
+        .focus-list .panel span {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* ---- Blog ---- */
+        .composer {
+            padding: 28px;
+            margin-bottom: 34px;
+        }
+
+        .composer h3 {
+            margin-bottom: 18px;
+            font-size: 1.15rem;
+        }
+
+        .blog-grid {
+            display: grid;
+            gap: 20px;
+        }
+
+        .blog-post {
+            padding: 26px;
+        }
+
+        .blog-post .post-date {
+            margin: 0 0 10px;
+        }
+
+        .blog-post h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        .blog-post p.body {
+            color: #d8d4c6;
+            margin: 0 0 16px;
+        }
+
+        /* ---- Doubts ---- */
+        .doubt-item {
+            padding: 26px;
+            margin-bottom: 20px;
+        }
+
+        .doubt-question {
+            font-family: var(--font-display);
+            font-size: 1.15rem;
+            margin: 0 0 8px;
+            color: #fbf6ea;
+        }
+
+        .doubt-meta {
+            margin: 0 0 14px;
+        }
+
+        .doubt-answer {
+            background: #ffffff08;
+            border-left: 2px solid var(--teal);
+            padding: 12px 16px;
+            border-radius: 0 8px 8px 0;
+            margin: 0 0 16px;
+            color: #d8d4c6;
+        }
+
+        .doubt-answer.is-pending {
+            border-left-color: var(--text-muted);
+            font-style: italic;
+            color: var(--text-muted);
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 6px;
+        }
+
+        .answer-form {
+            margin-top: 16px;
+        }
+
+        .answer-form textarea {
+            margin-bottom: 10px;
+        }
+
+        .comments-section {
+            margin-top: 20px;
+            padding-top: 18px;
+            border-top: 1px solid var(--rule);
+        }
+
+        .comments-section h4 {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--text-muted);
+            margin-bottom: 14px;
+        }
+
+        .comment {
+            background: #ffffff06;
+            border-radius: 8px;
+            padding: 12px 14px;
+            margin-bottom: 10px;
+        }
+
+        .comment-author {
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+            color: var(--teal);
+        }
+
+        .comment-text {
+            margin-top: 4px;
+        }
+
+        .comment-time {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            margin-top: 6px;
+        }
+
+        .comment-form {
+            display: flex;
+            gap: 10px;
+            margin-top: 14px;
+        }
+
+        .comment-form input {
+            flex: 1;
+        }
+
+        /* ---- Shared list states ---- */
+        .empty-state {
+            padding: 50px 30px;
+            text-align: center;
+            color: var(--text-muted);
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+        }
+
+        .error-state {
+            padding: 30px;
+            text-align: center;
+            border: 1px dashed var(--rose);
+            border-radius: var(--radius);
+            color: var(--rose);
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+        }
+
+        .error-state .btn {
+            margin-top: 14px;
+        }
+
+        .skeleton-card {
+            padding: 26px;
+            margin-bottom: 20px;
+        }
+
+        .skeleton-line {
+            height: 14px;
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 860px) {
+            .now-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="site-nav">
+        <div class="container">
+            <a class="brand" href="index.html">Netik Sharma <span>MISSION IIT</span></a>
+            <ul>
+                <li><a class="nav-link" href="index.html">Home</a></li>
+                <li><a class="nav-link is-active" href="modified-version.html">Study Log</a></li>
+                <li><a class="nav-link" href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <div class="log-head">
+            <p class="kicker">Study log</p>
+            <h1>Blog posts, open doubts, and whatever I'm learning right now.</h1>
+        </div>
+
+        <nav class="tabs">
+            <button type="button" class="active" data-section="now">Now</button>
+            <button type="button" data-section="blog">Blog</button>
+            <button type="button" data-section="doubts">Doubts</button>
+        </nav>
+
+        <div id="now" class="section active">
+            <div class="now-grid">
+                <div>
+                    <h2>What I'm doing right now</h2>
+                    <p>I love Mathematics and Physics, and I'm preparing for JEE Advanced and Olympiads (IOQM, NSEP, and friends) with full dedication and discipline.</p>
+                    <p>This page is where the actual work happens in public — blog posts on what's working, and a running board of doubts other students and I are chipping away at together. Everything below is saved for good, not just for this browser tab.</p>
+                </div>
+                <div class="focus-list">
+                    <div class="panel"><b>Mechanics</b><span>Rotational motion, rigid body systems</span></div>
+                    <div class="panel"><b>Number theory</b><span>IOQM-style problem sets</span></div>
+                    <div class="panel"><b>Organic chemistry</b><span>Reaction mechanisms, NCERT deep dive</span></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="blog" class="section">
+            <div class="panel composer">
+                <h3>Publish a new post</h3>
+                <div class="field">
+                    <label for="blogTitle">Title</label>
+                    <input type="text" id="blogTitle" placeholder="How I manage 8+ hours of daily study">
+                </div>
+                <div class="field">
+                    <label for="blogContent">Content</label>
+                    <textarea id="blogContent" rows="5" placeholder="Write your blog content here..."></textarea>
+                </div>
+                <button class="btn" id="publishBlogBtn">Publish post →</button>
+            </div>
+            <div id="blogContainer" class="blog-grid"></div>
+        </div>
+
+        <div id="doubts" class="section">
+            <div class="panel composer">
+                <h3>Submit a doubt</h3>
+                <div class="field">
+                    <label for="doubtName">Your name</label>
+                    <input type="text" id="doubtName" placeholder="Rahul">
+                </div>
+                <div class="field">
+                    <label for="doubtSubject">Subject</label>
+                    <input type="text" id="doubtSubject" placeholder="Physics / Maths / Chemistry">
+                </div>
+                <div class="field">
+                    <label for="doubtQuestion">Your question</label>
+                    <textarea id="doubtQuestion" rows="4" placeholder="What are you stuck on?"></textarea>
+                </div>
+                <button class="btn" id="submitDoubtBtn">Submit doubt →</button>
+            </div>
+            <div id="doubtList"></div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            © 2026 Netik Sharma · <a href="index.html">Back home</a>
+        </div>
+    </footer>
+
+    <div class="toast-stack"></div>
+
+    <script type="module">
+        import { toast, escapeHtml, timeAgo } from './assets/js/util.js';
+
+        const blogContainer = document.getElementById('blogContainer');
+        const doubtList = document.getElementById('doubtList');
+
+        function skeletonCards(count, lines) {
+            return Array.from({ length: count }, () => `
+                <div class="panel skeleton-card">
+                    ${Array.from({ length: lines }, (_, i) => `<div class="skeleton skeleton-line" style="width:${i === 0 ? '40%' : i === lines - 1 ? '70%' : '95%'}"></div>`).join('')}
+                </div>
+            `).join('');
+        }
+
+        async function api(url, options) {
+            const res = await fetch(url, options);
+            if (!res.ok) {
+                let message = `Request failed (${res.status})`;
+                try {
+                    const body = await res.json();
+                    if (body?.error) message = body.error;
+                } catch {}
+                throw new Error(message);
+            }
+            if (res.status === 204) return null;
+            return res.json();
+        }
+
+        // ---------------- Tabs ----------------
+        document.querySelectorAll('.tabs button').forEach((btn) => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.section').forEach((s) => s.classList.remove('active'));
+                document.querySelectorAll('.tabs button').forEach((b) => b.classList.remove('active'));
+                document.getElementById(btn.dataset.section).classList.add('active');
+                btn.classList.add('active');
+            });
+        });
+
+        // ---------------- Blog ----------------
+        function renderBlogPost(post) {
+            return `
+                <article class="panel blog-post" data-blog-id="${post.id}">
+                    <p class="mono text-muted post-date">${new Date(post.createdAt).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })} · ${timeAgo(post.createdAt)}</p>
+                    <h3>${escapeHtml(post.title)}</h3>
+                    <p class="body">${escapeHtml(post.content)}</p>
+                    <button class="btn btn-sm btn-rose" data-action="delete-blog" data-id="${post.id}">Delete</button>
+                </article>
+            `;
+        }
+
+        async function loadBlogs() {
+            blogContainer.innerHTML = skeletonCards(2, 4);
+            try {
+                const posts = await api('/api/blogs');
+                if (!posts.length) {
+                    blogContainer.innerHTML = `<div class="panel empty-state">No posts yet — publish the first one above.</div>`;
+                    return;
+                }
+                blogContainer.innerHTML = posts.map(renderBlogPost).join('');
+            } catch (err) {
+                blogContainer.innerHTML = `<div class="error-state">Couldn't load posts: ${escapeHtml(err.message)}<br><button class="btn btn-sm btn-ghost" id="retryBlogs">Retry</button></div>`;
+                document.getElementById('retryBlogs').addEventListener('click', loadBlogs);
+            }
+        }
+
+        document.getElementById('publishBlogBtn').addEventListener('click', async () => {
+            const titleInput = document.getElementById('blogTitle');
+            const contentInput = document.getElementById('blogContent');
+            const title = titleInput.value.trim();
+            const content = contentInput.value.trim();
+            if (!title || !content) {
+                toast('Please fill both title and content.', { type: 'error' });
+                return;
+            }
+            const btn = document.getElementById('publishBlogBtn');
+            btn.disabled = true;
+            try {
+                await api('/api/blogs', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ title, content }),
+                });
+                titleInput.value = '';
+                contentInput.value = '';
+                toast('Post published.');
+                await loadBlogs();
+            } catch (err) {
+                toast(err.message, { type: 'error' });
+            } finally {
+                btn.disabled = false;
+            }
+        });
+
+        blogContainer.addEventListener('click', async (e) => {
+            const btn = e.target.closest('[data-action="delete-blog"]');
+            if (!btn) return;
+            if (!confirm('Delete this post?')) return;
+            btn.disabled = true;
+            try {
+                await api(`/api/blogs/${btn.dataset.id}`, { method: 'DELETE' });
+                toast('Post deleted.');
+                await loadBlogs();
+            } catch (err) {
+                toast(err.message, { type: 'error' });
+                btn.disabled = false;
+            }
+        });
+
+        // ---------------- Doubts ----------------
+        function renderComment(comment) {
+            return `
+                <div class="comment">
+                    <div class="comment-author">${escapeHtml(comment.author)}</div>
+                    <div class="comment-text">${escapeHtml(comment.text)}</div>
+                    <div class="comment-time">${timeAgo(comment.createdAt)}</div>
+                </div>
+            `;
+        }
+
+        function renderDoubt(doubt) {
+            const hasAnswer = Boolean(doubt.answer);
+            return `
+                <article class="panel doubt-item" data-doubt-id="${doubt.id}">
+                    <p class="doubt-question">Q: ${escapeHtml(doubt.question)}</p>
+                    <p class="doubt-meta mono text-muted">${escapeHtml(doubt.subject)} · asked by ${escapeHtml(doubt.name)} · ${timeAgo(doubt.createdAt)}</p>
+                    <p class="doubt-answer ${hasAnswer ? '' : 'is-pending'}">${hasAnswer ? `Answer: ${escapeHtml(doubt.answer)}` : 'Awaiting an answer...'}</p>
+                    <div class="action-buttons">
+                        <button class="btn btn-sm btn-ghost" data-action="toggle-answer" data-id="${doubt.id}">${hasAnswer ? 'Edit answer' : 'Add answer'}</button>
+                        <button class="btn btn-sm btn-rose" data-action="delete-doubt" data-id="${doubt.id}">Delete doubt</button>
+                    </div>
+                    <div class="answer-form" id="answerForm${doubt.id}" hidden>
+                        <textarea rows="3" id="answerText${doubt.id}" placeholder="Write your answer here...">${escapeHtml(doubt.answer || '')}</textarea>
+                        <button class="btn btn-sm btn-teal" data-action="save-answer" data-id="${doubt.id}">Save answer</button>
+                    </div>
+                    <div class="comments-section">
+                        <h4>Comments (${doubt.comments.length})</h4>
+                        <div class="comment-list">${doubt.comments.map(renderComment).join('')}</div>
+                        <div class="comment-form">
+                            <input type="text" placeholder="Add a comment..." class="comment-input" data-doubt-id="${doubt.id}">
+                            <button class="btn btn-sm" data-action="add-comment" data-id="${doubt.id}">Post</button>
+                        </div>
+                    </div>
+                </article>
+            `;
+        }
+
+        async function loadDoubts() {
+            doubtList.innerHTML = skeletonCards(2, 5);
+            try {
+                const doubts = await api('/api/doubts');
+                if (!doubts.length) {
+                    doubtList.innerHTML = `<div class="panel empty-state">No doubts posted yet — be the first to ask above.</div>`;
+                    return;
+                }
+                doubtList.innerHTML = doubts.map(renderDoubt).join('');
+            } catch (err) {
+                doubtList.innerHTML = `<div class="error-state">Couldn't load doubts: ${escapeHtml(err.message)}<br><button class="btn btn-sm btn-ghost" id="retryDoubts">Retry</button></div>`;
+                document.getElementById('retryDoubts').addEventListener('click', loadDoubts);
+            }
+        }
+
+        document.getElementById('submitDoubtBtn').addEventListener('click', async () => {
+            const nameInput = document.getElementById('doubtName');
+            const subjectInput = document.getElementById('doubtSubject');
+            const questionInput = document.getElementById('doubtQuestion');
+            const name = nameInput.value.trim();
+            const subject = subjectInput.value.trim();
+            const question = questionInput.value.trim();
+            if (!name || !subject || !question) {
+                toast('Please fill all fields.', { type: 'error' });
+                return;
+            }
+            const btn = document.getElementById('submitDoubtBtn');
+            btn.disabled = true;
+            try {
+                await api('/api/doubts', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ name, subject, question }),
+                });
+                nameInput.value = '';
+                subjectInput.value = '';
+                questionInput.value = '';
+                toast('Doubt posted.');
+                await loadDoubts();
+            } catch (err) {
+                toast(err.message, { type: 'error' });
+            } finally {
+                btn.disabled = false;
+            }
+        });
+
+        doubtList.addEventListener('click', async (e) => {
+            const toggleBtn = e.target.closest('[data-action="toggle-answer"]');
+            if (toggleBtn) {
+                const form = document.getElementById(`answerForm${toggleBtn.dataset.id}`);
+                form.hidden = !form.hidden;
+                return;
+            }
+
+            const deleteBtn = e.target.closest('[data-action="delete-doubt"]');
+            if (deleteBtn) {
+                if (!confirm('Delete this doubt?')) return;
+                deleteBtn.disabled = true;
+                try {
+                    await api(`/api/doubts/${deleteBtn.dataset.id}`, { method: 'DELETE' });
+                    toast('Doubt deleted.');
+                    await loadDoubts();
+                } catch (err) {
+                    toast(err.message, { type: 'error' });
+                    deleteBtn.disabled = false;
+                }
+                return;
+            }
+
+            const saveBtn = e.target.closest('[data-action="save-answer"]');
+            if (saveBtn) {
+                const id = saveBtn.dataset.id;
+                const answer = document.getElementById(`answerText${id}`).value.trim();
+                if (!answer) {
+                    toast('Write an answer before saving.', { type: 'error' });
+                    return;
+                }
+                saveBtn.disabled = true;
+                try {
+                    await api(`/api/doubts/${id}`, {
+                        method: 'PATCH',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ answer }),
+                    });
+                    toast('Answer saved.');
+                    await loadDoubts();
+                } catch (err) {
+                    toast(err.message, { type: 'error' });
+                    saveBtn.disabled = false;
+                }
+                return;
+            }
+
+            const commentBtn = e.target.closest('[data-action="add-comment"]');
+            if (commentBtn) {
+                await postComment(commentBtn.dataset.id);
+            }
+        });
+
+        doubtList.addEventListener('keypress', (e) => {
+            if (e.target.classList.contains('comment-input') && e.key === 'Enter') {
+                postComment(e.target.dataset.doubtId);
+            }
+        });
+
+        async function postComment(doubtId) {
+            const input = document.querySelector(`.comment-input[data-doubt-id="${doubtId}"]`);
+            const text = input.value.trim();
+            if (!text) {
+                toast('Write a comment first.', { type: 'error' });
+                return;
+            }
+            input.disabled = true;
+            try {
+                await api(`/api/doubts/${doubtId}/comments`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ text }),
+                });
+                await loadDoubts();
+            } catch (err) {
+                toast(err.message, { type: 'error' });
+                input.disabled = false;
+            }
+        }
+
+        loadBlogs();
+        loadDoubts();
+    </script>
+</body>
+</html>
