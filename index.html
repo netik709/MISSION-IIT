@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Netik Sharma — Mission IIT</title>
+  <meta name="description" content="Netik Sharma's study log — JEE Advanced and Olympiad preparation in mathematics and physics." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Literata:ital,wght@0,400;0,500;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/site.css" />
+  <style>
+    .hero {
+      position: relative;
+      padding: 150px 0 110px;
+      overflow: hidden;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 0.9fr;
+      gap: 40px;
+      align-items: end;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.6rem, 6vw, 4.6rem);
+      max-width: 12ch;
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      color: var(--gold);
+    }
+
+    .hero-lede {
+      max-width: 46ch;
+      color: var(--text-muted);
+      font-size: 1.15rem;
+      margin-top: 18px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      margin-top: 34px;
+      flex-wrap: wrap;
+    }
+
+    .hero-card {
+      justify-self: end;
+      padding: 26px;
+      width: 100%;
+      max-width: 320px;
+      transform: rotate(1.5deg);
+    }
+
+    .hero-card .kicker {
+      margin-bottom: 14px;
+    }
+
+    .hero-card ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+    }
+
+    .hero-card li {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-top: 1px dashed var(--rule-strong);
+    }
+
+    .hero-card li:first-child {
+      border-top: none;
+    }
+
+    .hero-card li b {
+      color: var(--gold);
+      font-weight: 600;
+    }
+
+    .margin-note {
+      position: absolute;
+      font-family: var(--font-mono);
+      color: #ffffff14;
+      font-size: 3rem;
+      user-select: none;
+      pointer-events: none;
+      animation: drift 22s ease-in-out infinite;
+    }
+
+    @keyframes drift {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-22px) rotate(4deg); }
+    }
+
+    section {
+      padding: 90px 0;
+    }
+
+    .section-head {
+      max-width: 60ch;
+      margin-bottom: 46px;
+    }
+
+    .section-head h2 {
+      font-size: clamp(1.9rem, 3.4vw, 2.6rem);
+    }
+
+    #mission {
+      border-top: 1px solid var(--rule);
+      background: linear-gradient(180deg, transparent, #ffffff05, transparent);
+    }
+
+    .mission-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .mission-card {
+      padding: 28px 24px;
+    }
+
+    .mission-card .num {
+      font-family: var(--font-mono);
+      color: var(--teal);
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+    }
+
+    .mission-card h3 {
+      font-size: 1.25rem;
+      margin: 14px 0 10px;
+    }
+
+    .mission-card p {
+      color: var(--text-muted);
+      margin: 0;
+      font-size: 0.98rem;
+    }
+
+    #about {
+      border-top: 1px solid var(--rule);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 0.85fr 1.15fr;
+      gap: 50px;
+      align-items: start;
+    }
+
+    .about-grid p {
+      color: #d8d4c6;
+    }
+
+    .stat-list {
+      display: grid;
+      gap: 18px;
+    }
+
+    .stat {
+      padding: 20px;
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .stat b {
+      font-family: var(--font-display);
+      font-size: 1.7rem;
+      color: var(--gold);
+    }
+
+    .stat span {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      text-align: right;
+    }
+
+    #contact-teaser {
+      border-top: 1px solid var(--rule);
+    }
+
+    .contact-teaser-card {
+      padding: 50px;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .contact-teaser-card h2 {
+      font-size: clamp(1.7rem, 3vw, 2.3rem);
+    }
+
+    .contact-links {
+      font-family: var(--font-mono);
+      font-size: 0.92rem;
+      line-height: 2.1;
+    }
+
+    .contact-links a {
+      text-decoration: none;
+      border-bottom: 1px solid var(--rule-strong);
+    }
+
+    .contact-links a:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+
+    .teaser-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    @media (max-width: 860px) {
+      .hero-grid, .about-grid, .contact-teaser-card {
+        grid-template-columns: 1fr;
+      }
+      .hero-card {
+        justify-self: start;
+        transform: none;
+      }
+      .mission-grid {
+        grid-template-columns: 1fr;
+      }
+      .teaser-actions {
+        align-items: stretch;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="site-nav">
+    <div class="container">
+      <a class="brand" href="index.html">Netik Sharma <span>MISSION IIT</span></a>
+      <ul>
+        <li><a class="nav-link is-active" href="index.html#home">Home</a></li>
+        <li><a class="nav-link" href="index.html#mission">Mission</a></li>
+        <li><a class="nav-link" href="modified-version.html">Study Log</a></li>
+        <li><a class="nav-link" href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header id="home" class="hero">
+    <span class="margin-note" style="top:12%; left:6%;">∑</span>
+    <span class="margin-note" style="top:60%; left:2%; font-size:2rem;">π</span>
+    <span class="margin-note" style="top:20%; right:4%; font-size:2.4rem;">∞</span>
+    <div class="container hero-grid">
+      <div>
+        <p class="kicker">Class of 2027 · Aspirant</p>
+        <h1>Chasing <em>IIT</em> one solved problem at a time.</h1>
+        <p class="hero-lede">I'm Netik — I spend my mornings with Irodov and my evenings with number theory. This is where I log the climb toward JEE Advanced and the Olympiad circuit.</p>
+        <div class="hero-actions">
+          <a class="btn" href="modified-version.html">Read the study log →</a>
+          <a class="btn btn-ghost" href="contact.html">Get in touch</a>
+        </div>
+      </div>
+      <div class="panel hero-card">
+        <p class="kicker">Currently grinding</p>
+        <ul>
+          <li><span>Exam</span><b>JEE Advanced</b></li>
+          <li><span>Olympiads</span><b>IOQM · NSEP</b></li>
+          <li><span>Subjects</span><b>Maths · Physics</b></li>
+          <li><span>Wake-up call</span><b>5:00 AM</b></li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
+  <section id="mission">
+    <div class="container">
+      <div class="section-head">
+        <p class="kicker">Why I'm doing this</p>
+        <h2>Mission IIT isn't a slogan — it's a schedule.</h2>
+      </div>
+      <div class="mission-grid">
+        <div class="panel mission-card">
+          <p class="num">01</p>
+          <h3>The commitment</h3>
+          <p>A journey through formulas, mock tests, and sleepless nights aimed squarely at the gates of the Indian Institutes of Technology.</p>
+        </div>
+        <div class="panel mission-card">
+          <p class="num">02</p>
+          <h3>The method</h3>
+          <p>Pomodoro blocks split across Maths, Physics, and Chemistry, with evenings reserved for previous-year papers and honest revision.</p>
+        </div>
+        <div class="panel mission-card">
+          <p class="num">03</p>
+          <h3>The proof</h3>
+          <p>Every doubt I get stuck on and every blog post I write lives on the <a href="modified-version.html" style="color:var(--teal)">study log</a> — nothing hidden, nothing polished after the fact.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="container about-grid">
+      <div>
+        <p class="kicker">About me</p>
+        <h2>Consistency over intensity.</h2>
+        <p>I believe in showing up daily, staying focused, and doing smart work rather than just hard work. My day starts early and ends with learning — I've been chasing the dream of cracking JEE since 8th grade, and I'm closer now than I've ever been.</p>
+        <p>Olympiads like IOQM and NSEP keep the problem-solving muscle sharp between board-exam syllabi, and I try to write down what I learn so future-me (and anyone else prepping) can use it.</p>
+      </div>
+      <div class="stat-list">
+        <div class="panel stat"><b>8th</b><span>Grade the dream started</span></div>
+        <div class="panel stat"><b>~8 hrs</b><span>Daily focused study</span></div>
+        <div class="panel stat"><b>2</b><span>Olympiads in active prep</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact-teaser">
+    <div class="container">
+      <div class="paper-card contact-teaser-card">
+        <div>
+          <p class="kicker" style="color:#8a5b12">Say hello</p>
+          <h2>Have a doubt, a resource to share, or just want to say hi?</h2>
+          <p class="contact-links">
+            Email: <a href="mailto:netiksharma801@gmail.com">netiksharma801@gmail.com</a><br />
+            Location: India
+          </p>
+        </div>
+        <div class="teaser-actions">
+          <a class="btn" href="contact.html">Open contact form →</a>
+          <a class="btn btn-ghost" style="border-color:#22201a55; color:#22201a" href="modified-version.html">Post a doubt instead</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      © 2026 Netik Sharma · Built while procrastinating on a problem set ·
+      <a href="https://github.com" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,17 @@
+{
+  "name": "mission-iit",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "netlify dev"
+  },
+  "dependencies": {
+    "@netlify/database": "latest",
+    "drizzle-orm": "beta"
+  },
+  "devDependencies": {
+    "@netlify/functions": "latest",
+    "drizzle-kit": "beta",
+    "typescript": "^5"
+  }
+}
